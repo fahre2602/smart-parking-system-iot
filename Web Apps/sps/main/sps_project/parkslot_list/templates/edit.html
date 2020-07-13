@@ -1,0 +1,15 @@
+{% extends 'emptypage.html' %}
+
+{% block content %}
+  {% if slot %}
+
+  <form class="form-inline my-2 my-lg-0" method="POST">
+    {% csrf_token %}
+    <input type="search" class="form-control mr-sm-2" placeholder="{{ slot.slot}}" value="{{ slot.slot }}" aria-label="Search" name="slot">
+    <input type="search" class="form-control mr-sm-2" placeholder="{{ slot.status}}" value="{{ slot.status }}" aria-label="Search" name="status">
+    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Edit Slot</button>
+  </form>
+
+  {% endif %}
+
+{% endblock %}

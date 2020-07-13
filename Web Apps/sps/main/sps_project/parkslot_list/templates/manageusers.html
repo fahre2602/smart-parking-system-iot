@@ -1,0 +1,83 @@
+{% extends 'emptypage.html' %}
+
+{% block content %}
+  <div class="container wow fadeIn">
+    <div class="section-header">
+      <h3 class="section-title">Manage Users</h3>
+      <p class="section-description">Halaman Manage Akun User</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 wow fadeInUp" data-wow-delay="0.4s">
+        <div class="box">
+          {% if all_akun %}
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>Username</th>
+              <th>Nama</th>
+              <th><center>Activity</center></th>
+            </tr>
+            </thead>
+            {% for things in all_akun %}
+              <tr>
+                <td>{{ things.username }}</td>
+                <td>{{ things.nama }}</td>
+                <td><center><a href="" data-toggle="modal" data-target="#editModal{{things.id}}" class="btn btn-brand">Edit</a> | <a href="" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{things.id}}">Delete</a></center></td>
+              </tr>
+              <!-- Modal -->
+              <div class="modal fade" id="deleteModal{{things.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel1">Are you sure ?</h5>
+                              <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </a>
+                          </div>
+                          <div class="modal-body">
+                              <p>Akun yang dihapus tidak dapat dikembalikan.</p>
+                          </div>
+                          <div class="modal-footer">
+                              <a href="#" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                              <a href="{% url 'delete' things.id %}" class="btn btn-danger">Delete</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal fade" id="editModal{{things.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel2">Edit Akun</h5>
+                              <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </a>
+                          </div>
+                          <div class="modal-body">
+                            <form role="form" method="post">
+                              {% csrf_token %}
+                              <div class="form-group">
+                                <label for="nama">Nama</label>
+                                <input class="form-control" id="nama" type="text" name="nama" value="{{ things.nama }}">
+                              </div>
+                              <center><button type="submit" class="btn btn-rounded btn-success" formaction="{% url 'editakun' things.id %}">Save</button></center>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                              <a href="#" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            {% endfor %}
+          </table>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <center><a href="{% url 'createuser' %}" class="btn btn-rounded btn-info wow fadeInUp" data-wow-delay="0.6s">Create Akun</a></center>
+    <br>
+    <center><a href="{% url 'home' %}" class="btn btn-rounded btn-dark wow fadeInUp" data-wow-delay="0.6s">Home</a></center>
+
+  </div>
+{% endblock %}

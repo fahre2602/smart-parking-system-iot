@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textStaticViewStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textViewSlot"
+        android:layout_toRightOf="@+id/textViewSlot"
+        android:text="Status : "
+        android:textAlignment="center"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/textViewStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textStaticViewStatus"
+        android:text="Ada"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewSlot"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:text="S001"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="35dp"
+        android:layout_gravity="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textStaticViewLock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewStatus"
+        android:layout_toEndOf="@+id/textViewSlot"
+        android:layout_toRightOf="@+id/textViewSlot"
+        android:text="Lock : "
+        android:textAlignment="center"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/textViewLock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewStatus"
+        android:layout_toRightOf="@+id/textStaticViewLock"
+        android:text="0"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonBooking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewLock"
+        android:layout_alignBottom="@+id/textViewSlot"
+        android:layout_toEndOf="@+id/textViewSlot"
+        android:layout_toRightOf="@+id/textViewSlot"
+        android:background="#FF0000"
+        android:text="Booking" />
+
+    <Button
+        android:id="@+id/buttonUnlock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewLock"
+        android:layout_alignBottom="@+id/textViewSlot"
+        android:background="#00ff00"
+        android:text="Unlock" />
+
+
+</RelativeLayout>

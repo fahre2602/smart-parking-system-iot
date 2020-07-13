@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-warning alert_dismissable" role="alert">
+        <button class="close" data-dismiss="alert">
+          <small><sup></sup></small>
+        </button>
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+{% if all_slots %}
+<div class="wow fadeInUp">
+  <div class="row">
+            {% for things in all_slots %}
+
+            <div class="col-lg-6 col-md-6 bg-light">
+              <div class="member"><center>
+                <!-- <h1><a href="{% url 'edit' things.id %}"> -->
+                  <h1><a href="#portfolio">
+                  {% if things.lock == 1 %}<font color="red">{{ things.slot }}</font>
+                  {% else %}{{ things.slot }}
+                  {% endif %}
+                  </a></h1>
+                {% if things.status == "no" %}
+                <h4>Status : Unoccupied</h4>
+                {% endif %}
+                <h4><a href="" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{things.id}}">Delete</a> | <a href="{% url 'unlock' things.id %}" class="btn btn-success">Unlock</a>  </h4>
+                <!-- <span>Chief Executive Officer</span> -->
+                <!-- <div class="social">
+                  <a href=""><i class="fa fa-twitter"></i></a>
+                  <a href=""><i class="fa fa-facebook"></i></a>
+                  <a href=""><i class="fa fa-google-plus"></i></a>
+                  <a href=""><i class="fa fa-linkedin"></i></a>
+                </div> -->
+                <!-- Modal -->
+                <div class="modal fade" id="deleteModal{{things.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Are you sure ?</h5>
+                                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </a>
+                            </div>
+                            <div class="modal-body">
+                                <p>Slot yang dihapus tidak dapat dikembalikan.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                                <a href="{% url 'delete' things.id %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </center>
+              </div>
+            </div>
+            {% endfor %}
+
+
+          </div>
+
+</div>
+{% endif %}
+
+
+{% endblock %}
