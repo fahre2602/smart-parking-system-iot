@@ -13,7 +13,6 @@ The mobile application was built in Android.
 - IoT Devices
 There are 2 device used, Raspberry Pi 3 as Master and ESP8266 Wifi Module as Slave.
 
-Smart Parking System uses IoT devices to capture real time data of a parking space (either the parking space is being used, empty or booked) and save them as message via MQTT. The web app and mobile app will then acts according to those messages. User can book a parking space by using the mobile app. The mobile app sends data to web app's API, and those data will be processed and message will be send by using MQTT to IoT Devices.
-*Local Network ...*
+Smart Parking System uses IoT devices to capture real time data of a parking space (either the parking space is being used, empty or booked) and save them as message via MQTT. The web app and mobile app will then acts according to those messages. User can book a parking space by using the mobile app. The mobile app sends data to web app's API, and those data will be processed and message will be send by using MQTT to IoT Devices. Currently, Smart Parking System's code was tested only on local network.
 
 
